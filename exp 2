@@ -1,0 +1,51 @@
+def average(l1):
+    s = sum(l1) + absent_students(l1)
+    count = len(l1)
+    avg = s/count
+    print("Total Marks : ", s)
+    return avg
+
+
+def maximum(l1):
+    maxim = 0
+    for j in range(len(l1)):
+        if l1[j] != -1:
+            maxim = l1[0]
+            break
+    for j in range(1, len(l1)):
+        if l1[j] > l1[0]:
+            maxim = l1[j]
+    return maxim
+
+
+def minimum(l1):
+    mini = 0
+    for j in range(len(l1)):
+        if l1[j] != -1:
+            mini = l1[0]
+            break
+    for j in range(1, len(l1)):
+        if -1 < l1[j] < l1[0]:
+            mini = l1[j]
+    return mini
+
+
+def absent_students(l1):
+    count = 0
+    for j in range(len(l1)):
+        if l1[j] == -1:
+            count += 1
+    return count
+
+
+FDS = []
+n = int(input("Enter the number of students: "))
+print("Enter the marks of", n, "students in FDS: ")
+for i in range(n):
+    marks = int(input())
+    FDS.append(marks)
+print(FDS)
+print("Average score: ", average(FDS))
+print("Maximum score: ", maximum(FDS))
+print("Minimum score: ", minimum(FDS))
+print("Absent count: ", absent_students(FDS))
