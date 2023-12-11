@@ -1,0 +1,98 @@
+def both_cb(lst1, lst2):
+    lst3 = []
+    for j in lst1:
+        if j in lst2:
+            lst3.append(j)
+    return lst3
+
+
+def union(lst1, lst2):
+    lst3 = lst1.copy()
+    for val in lst2:
+        if val not in lst3:
+            lst3.append(val)
+    return lst3
+
+
+def diff(lst1, lst2):
+    lst3 = []
+    for val in lst1:
+        if val not in lst2:
+            lst3.append(val)
+    return lst3
+
+
+def either_cb(lst1, lst2):
+    lst3 = []
+    d1 = diff(lst1, lst2)
+    d2 = diff(lst2, lst1)
+    d3 = union(d1, d2)
+    lst3.append(d3)
+    return lst3
+
+
+def bcb(lst1, lst2):
+    lst3 = both_cb(lst1, lst2)
+    print("List of students who play both cricket and badminton: ", lst3)
+    return len(lst3)
+
+
+def eceb(lst1, lst2):
+    lst3 = either_cb(lst1, lst2)
+    print("List of students who play either cricket or badminton but not both is : ", lst3)
+    return len(lst3)
+
+
+def ncnb(lst1, lst2, lst3):
+    lst4 = diff(lst1, union(lst2, lst3))
+    print("List of students who play neither cricket nor badminton is : ", lst4)
+    return len(lst4)
+
+
+def cfnb(lst1, lst2, lst3):
+    lst4 = diff(both_cb(lst1, lst2), lst3)
+    print("List of students who play cricket and football but not badminton is : ", lst4)
+    return len(lst4)
+
+
+se_aids = []
+n = int(input("Number of students who are in SE-AIDS: "))
+print("Enter the names of", n, "students who are in SE-AIDS: ")
+for i in range(n):
+    stud = input()
+    se_aids.append(stud)
+print("List of students playing cricket is :" + str(se_aids))
+
+
+cricket = []
+n = int(input("Number of students who play cricket: "))
+print("Enter the names of", n, "students who play cricket: ")
+for i in range(n):
+    cric = input()
+    cricket.append(cric)
+print("List of students playing cricket is :" + str(cricket))
+
+badminton = []
+n = int(input("Number of students who play badminton: "))
+print("Enter the names of", n, "students who play badminton: ")
+for i in range(n):
+    badm = input()
+    badminton.append(badm)
+print("List of students playing badminton is :" + str(badminton))
+
+football = []
+n = int(input("Number of students who play football: "))
+print("Enter the names of", n, "students who play football: ")
+for i in range(n):
+    foot = input()
+    football.append(foot)
+print("List of students playing football is :" + str(football))
+
+
+n = 1
+if n == 1:
+    print("Number of students who play both cricket and badminton : ", bcb(cricket, badminton))
+    print("Number of students who play either cricket or badminton but not both : ", eceb(cricket, badminton))
+    print("Number of students who play neither cricket nor badminton : ", ncnb(se_aids, cricket, badminton))
+    print("Number of students who play cricket and football but not badminton : ", cfnb(cricket, football, badminton))
+    n += 1
