@@ -1,0 +1,42 @@
+#Selection Sort
+
+marks = []
+n = int(input("Enter number of students whose marks are to be displayed : "))
+print("Enter marks for", n, "students: ")
+for i in range(0, n):
+    ele = int(input())
+    marks.append(ele)
+
+print("The marks of", n, "students are : ")
+print(marks)
+for i in range(len(marks)):
+
+    min_idx = i
+    for j in range(i, len(marks)):
+        if marks[min_idx] > marks[j]:
+            min_idx = j
+            marks[i], marks[min_idx] = marks[min_idx], marks[i]
+            print(marks)
+print("Marks of students after performing Selection Sort on the list :", marks)
+
+
+#Bubble sort
+
+marks = []
+n = int(input("Enter number of students whose marks are to be displayed : "))
+print("Enter marks for", n, "students: ")
+for i in range(0, n):
+    ele = int(input())
+    marks.append(ele)
+
+print("The marks of", n, "students are : ")
+print(marks)
+
+n = len(marks)
+for i in range(n - 1):
+    for j in range(0, n - i - 1):
+
+        if marks[j] > marks[j + 1]:
+            marks[j], marks[j + 1] = marks[j + 1], marks[j]
+            print(marks)
+print("Marks of students after performing Bubble Sort on the list :", marks)
