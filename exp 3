@@ -1,0 +1,39 @@
+def delete_duplicates(books):
+    return list(set(books))
+
+def display_books_in_ascending_order(books):
+    return sorted(books, key=lambda x: x[1])
+
+def count_expensive_books(books):
+    return sum(1 for book in books if book[1] > 500)
+
+def copy_books_less_than_500(books):
+    return [book for book in books if book[1] < 500]
+
+def main():
+    num_books = int(input("Enter the number of books: "))
+    books = []
+
+    for i in range(num_books):
+        title = input(f"Enter the title of book {i + 1}: ")
+        cost = float(input(f"Enter the cost of book {i + 1}: "))
+        books.append((title, cost))
+
+    # Delete duplicates
+    books_without_duplicates = delete_duplicates(books)
+    print("\nBooks without duplicates:", books_without_duplicates)
+
+    # Display books in ascending order of cost
+    books_sorted_by_cost = display_books_in_ascending_order(books)
+    print("\nBooks sorted by cost (ascending order):", books_sorted_by_cost)
+
+    # Count number of books with cost more than 500
+    count_expensive = count_expensive_books(books)
+    print(f"\nNumber of books with cost more than 500: {count_expensive}")
+
+    # Copy books with cost less than 500 to a new list
+    books_less_than_500 = copy_books_less_than_500(books)
+    print("\nBooks with cost less than 500:", books_less_than_500)
+
+if __name__ == "__main__":
+    main()
